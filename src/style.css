@@ -1,0 +1,80 @@
+:root {
+  --desktop-content-width: 60vw;
+  --mobile-content-width: 90vw;
+  --desktop-text-size: 16px;
+  --mobile-text-size: 32px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-family: "Arial";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.15px;
+  line-height: calc(var(--desktop-text-size) + 2px);
+  font-size: var(--desktop-text-size);
+}
+
+a {
+  color: #244a98;
+}
+
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+#image {
+  width: var(--desktop-content-width);
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#caption {
+  text-align: center;
+}
+
+#divider {
+  font-size: calc(var(--desktop-text-size) + 2px);
+}
+
+#copy {
+  width: var(--desktop-content-width);
+  justify-content: left;
+}
+
+@media (pointer: none), (pointer: coarse) {
+  #image {
+    width: var(--mobile-content-width) !important;
+    margin-bottom: 36px !important;
+    padding-bottom: 40px !important;
+  }
+
+
+  #divider {
+    font-size: calc(var(--mobile-text-size));
+  }
+
+  #copy {
+    width: var(--mobile-content-width) !important;
+  }
+
+  p {
+    line-height: calc(var(--mobile-text-size) + 2px);
+    font-size: var(--mobile-text-size);
+  }
+}
