@@ -1,8 +1,8 @@
 const isTouchDevice = () => "ontouchstart" in window || navigator.maxTouchPoints > 0;
 const isMobileOrTablet = () => /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 const VIDEO_DURATION = 3;
-const VIDEO_FWD_PATH = "../assets/cover-f.mp4";
-const VIDEO_FWD_REV_PATH = "../assets/cover-fr.mp4";
+const VIDEO_FWD_PATH = "assets/cover-f.mp4";
+const VIDEO_FWD_REV_PATH = "assets/cover-fr.mp4";
 
 const video = document.querySelector("#image");
 
