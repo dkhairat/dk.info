@@ -2,8 +2,8 @@ const isTouchDevice = () => "ontouchstart" in window || navigator.maxTouchPoints
 const isMobileOrTablet = () => /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 const getImgPath = (i) => `assets/stills/frame_${String(i).padStart(3, "0")}.webp`;
 
-const NUM_STILLS = 63;
-const FRAME_RATE = 20;
+const NUM_STILLS = 47;
+const FRAME_RATE = 15;
 const MS = 1_000;
 
 const VIDEO_DURATION = 3;
