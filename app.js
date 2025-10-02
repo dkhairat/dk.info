@@ -13,21 +13,7 @@ const VIDEO_FWD_REV_PATH = "assets/cover-fr.mp4";
 const video = document.querySelector("video");
 const img = document.querySelector("img");
 
-try {
-  if (isTouchDevice() || isMobileOrTablet()) {
-    video.src = VIDEO_FWD_REV_PATH;
-    video.loop = true;
-    video.play();
-  } else {
-    const body = document.querySelector("body");
-    video.pause();
-    video.src = VIDEO_FWD_PATH;
-
-    body.addEventListener("mousemove", (e) => (video.currentTime = (e.clientX / body.clientWidth) * VIDEO_DURATION));
-    img.style.display = "none";
-  }
-} catch(e) {
-  console.log(e)
+const autoplayFallback = () => {
   var index = 0;
   var fwd = true;
   img.src = getImgPath(index);
@@ -52,4 +38,19 @@ try {
 
   setInterval(stepFrame, MS / FRAME_RATE);
   video.style.display = "none";
+};
+
+if (isTouchDevice() || isMobileOrTablet()) {
+  video.src = VIDEO_FWD_REV_PATH;
+  video.loop = true;
+  video.play().catch(() => {
+    autoplayFallback();
+  });
+} else {
+  const body = document.querySelector("body");
+  video.pause();
+  video.src = VIDEO_FWD_PATH;
+
+  body.addEventListener("mousemove", (e) => (video.currentTime = (e.clientX / body.clientWidth) * VIDEO_DURATION));
+  img.style.display = "none";
 }
