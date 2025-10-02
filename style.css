@@ -58,7 +58,7 @@ a {
 }
 
 @media (pointer: none), (pointer: coarse) {
-  #image {
+  .cover {
     width: var(--mobile-content-width) !important;
     margin-bottom: 36px !important;
     padding-bottom: 40px !important;
