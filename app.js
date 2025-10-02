@@ -7,7 +7,7 @@ const VIDEO_FWD_REV_PATH = "assets/cover-fr.mp4";
 const video = document.querySelector("#image");
 
 if (isTouchDevice() || isMobileOrTablet()) {
-  video.src = VIDEO_FWD_REV_PATH;
+  video.src = VIDEO_FWD_PATH;
   video.loop = true;
   video.play();
 } else {
