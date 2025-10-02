@@ -5,13 +5,29 @@ const getImgPath = (i) => `assets/stills/frame_${String(i).padStart(3, "0")}.web
 const NUM_STILLS = 63;
 const FRAME_RATE = 20;
 const MS = 1_000;
-const VIDEO_PATH = "assets/cover-f.mp4";
+
 const VIDEO_DURATION = 3;
+const VIDEO_FWD_PATH = "assets/cover-f.mp4";
+const VIDEO_FWD_REV_PATH = "assets/cover-fr.mp4";
 
 const video = document.querySelector("video");
 const img = document.querySelector("img");
 
-if (isTouchDevice() || isMobileOrTablet()) {
+try {
+  if (isTouchDevice() || isMobileOrTablet()) {
+    video.src = VIDEO_FWD_REV_PATH;
+    video.loop = true;
+    video.play();
+  } else {
+    const body = document.querySelector("body");
+    video.pause();
+    video.src = VIDEO_FWD_PATH;
+
+    body.addEventListener("mousemove", (e) => (video.currentTime = (e.clientX / body.clientWidth) * VIDEO_DURATION));
+    img.style.display = "none";
+  }
+} catch(e) {
+  console.log(e)
   var index = 0;
   var fwd = true;
   img.src = getImgPath(index);
@@ -36,11 +52,4 @@ if (isTouchDevice() || isMobileOrTablet()) {
 
   setInterval(stepFrame, MS / FRAME_RATE);
   video.style.display = "none";
-} else {
-  const body = document.querySelector("body");
-  video.pause();
-  video.src = VIDEO_PATH;
-
-  body.addEventListener("mousemove", (e) => (video.currentTime = (e.clientX / body.clientWidth) * VIDEO_DURATION));
-  image.style.display = "none";
 }
